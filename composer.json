@@ -1,0 +1,31 @@
+{
+    "name": "theplankmeister/datadog_bundle",
+    "description": "Provides dynamic stats manipulation in Datadog via a service for your Symfony4 app.",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "The Plankmeister",
+            "email": "plankmeister@gmail.com"
+        }
+    ],
+    "require": {
+        "datadog/php-datadogstatsd": "^1.0",
+        "symfony/dependency-injection": "^4.1"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^5.1",
+        "phpstan/phpstan-symfony": "^0.10.2",
+        "friendsofphp/php-cs-fixer": "^2.14"
+    },
+    "autoload": {
+        "psr-4": { "ThePlankmeister\\DatadogBundle\\": "" },
+        "exclude-from-classmap": [
+            "/spec/"
+        ]
+    },
+    "extra": {
+        "symfony": {
+            "require": "4.1.*"
+        }
+    }
+}

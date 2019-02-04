@@ -1,0 +1,9 @@
+suites:
+  default:
+    namespace: ThePlankmeister\DatadogBundle
+    psr4_prefix: ThePlankmeister\DatadogBundle
+    src_path: .
+
+formatter.name: pretty
+stop_on_failure: false
+no_code_generation: true
