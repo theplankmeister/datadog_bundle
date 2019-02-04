@@ -2,6 +2,7 @@
     "name": "theplankmeister/datadog_bundle",
     "description": "Provides dynamic stats manipulation in Datadog via a service for your Symfony4 app.",
     "type": "symfony-bundle",
+    "license": "MIT",
     "authors": [
         {
             "name": "The Plankmeister",
@@ -17,6 +18,7 @@
         "phpstan/phpstan-symfony": "^0.10.2",
         "friendsofphp/php-cs-fixer": "^2.14"
     },
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": { "ThePlankmeister\\DatadogBundle\\": "" },
         "exclude-from-classmap": [
