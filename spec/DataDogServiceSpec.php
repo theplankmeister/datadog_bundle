@@ -103,6 +103,18 @@ class DataDogServiceSpec extends \PhpSpec\ObjectBehavior
         $stats->microtiming('custom_prefix.subscribe.failed', 12345, 0.5, ['tagname' => 'value'])->shouldBeCalledOnce();
         $this->micSubscribeFailed(12345, 0.5, ['tagname' => 'value']);
     }
+
+    public function it_inits_all_metrics(DogStatsd $stats)
+    {
+        $stats->increment('custom_prefix.netaxept.registration_failed')->shouldBeCalledOnce();
+        $stats->decrement('custom_prefix.netaxept.registration_failed')->shouldBeCalledOnce();
+        $stats->increment('custom_prefix.authorisation.missing.session')->shouldBeCalledOnce();
+        $stats->decrement('custom_prefix.authorisation.missing.session')->shouldBeCalledOnce();
+        $stats->increment('custom_prefix.subscribe.failed')->shouldBeCalledOnce();
+        $stats->decrement('custom_prefix.subscribe.failed')->shouldBeCalledOnce();
+
+        $this->initAllMetrics();
+    }
 }
 
 /**

@@ -80,7 +80,7 @@ abstract class AbstractDatadogService
      */
     public function initAllMetrics(): void
     {
-        foreach ($this->methodMap as $metricName) {
+        foreach (array_unique($this->methodMap) as $metricName) {
             $this->statsd->increment($metricName);
             $this->statsd->decrement($metricName);
         }
