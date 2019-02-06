@@ -226,16 +226,16 @@ class DataDogServiceSpec extends \PhpSpec\ObjectBehavior
 }
 
 /**
- * @method void timAuthDecode(float $time, float $sampleRate = 1.0, array|string|null $tags = null) How long it takes to decode authentication token
- * @method void micAuthEncode(float $time, float $sampleRate = 1.0, array|string|null $tags = null) How long it takes to encode a new authentication token
- * @method void gauFizzBuzz(float $value, float $sampleRate = 1.0, array|string|null $tags = null) A description of what this method does to the fizz.buzz gauge
- * @method void hisFooBar(float $value, float $sampleRate = 1.0, array|string|null $tags = null) A description of what this method does to the foo.bar histogram
- * @method void disBooFar(float $value, float $sampleRate = 1.0, array|string|null $tags = null) A description of what this method does to the boo.far distribution
- * @method void setFozzBazz(float $value, float $sampleRate = 1.0, array|string|null $tags = null) A description of why this method adds/subtracts an arbitrary value to the fozz.bazz metric
- * @method void incSidJimBob(float $sampleRate = 1.0, array|string|null $tags = null, $incValue = 1) Increment the sid.jim.bob metric
- * @method void decAntDecTim(float $sampleRate = 1.0, array|string|null $tags = null, $decValue = 1) Decrement the ant.dec.tim metric
+ * @method void timAuthDecode(float $time, float $sampleRate = 1.0, array|string|null $tags = null)             How long it takes to decode authentication token
+ * @method void micAuthEncode(float $time, float $sampleRate = 1.0, array|string|null $tags = null)             How long it takes to encode a new authentication token
+ * @method void gauFizzBuzz(float $value, float $sampleRate = 1.0, array|string|null $tags = null)              A description of what this method does to the fizz.buzz gauge
+ * @method void hisFooBar(float $value, float $sampleRate = 1.0, array|string|null $tags = null)                A description of what this method does to the foo.bar histogram
+ * @method void disBooFar(float $value, float $sampleRate = 1.0, array|string|null $tags = null)                A description of what this method does to the boo.far distribution
+ * @method void setFozzBazz(float $value, float $sampleRate = 1.0, array|string|null $tags = null)              A description of why this method adds/subtracts an arbitrary value to the fozz.bazz metric
+ * @method void incSidJimBob(float $sampleRate = 1.0, array|string|null $tags = null, $incValue = 1)            Increment the sid.jim.bob metric
+ * @method void decAntDecTim(float $sampleRate = 1.0, array|string|null $tags = null, $decValue = 1)            Decrement the ant.dec.tim metric
  * @method void updSpuriousFloatingWidgets(int $delta, float $sampleRate = 1.0, array|string|null $tags = null) Updates the spurious.floating.widgets metric by $delta
- * @method void flowStart() When a user commences a traversal through the flow. This will not appear in the available Datadog metrics because its prefix is invalid.
+ * @method void flowStart()                                                                                     When a user commences a traversal through the flow. This will not appear in the available Datadog metrics because its prefix is invalid.
  */
 class TestClass1 extends AbstractDatadogService
 {
