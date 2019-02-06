@@ -57,20 +57,45 @@ abstract class AbstractDatadogService
 
         array_unshift($arguments, $this->methodMap[$name]);
         switch (substr($name, 0, 3)) {
-            case 'inc': $this->statsd->increment(...$arguments); break;
-            case 'dec': $this->statsd->decrement(...$arguments); break;
-            case 'tim':
+            case 'tim' :
                 if (count($arguments) < 2) {
-                    throw new \ArgumentCountError('Missing required timing argument.');
+                    throw new \ArgumentCountError(sprintf('%s::%s() requires $time argument.', get_class($this), $name));
                 }
                 $this->statsd->timing(...$arguments);
-                break;
-            case 'mic':
+            break;
+            case 'mic' :
                 if (count($arguments) < 2) {
-                    throw new \ArgumentCountError('Missing required timing argument.');
+                    throw new \ArgumentCountError(sprintf('%s::%s() requires $time argument.', get_class($this), $name));
                 }
                 $this->statsd->microtiming(...$arguments);
-                break;
+            break;
+            case 'gau' :
+                if (count($arguments) < 2) {
+                    throw new \ArgumentCountError(sprintf('%s::%s() requires $value argument.', get_class($this), $name));
+                }
+                $this->statsd->gauge(...$arguments);
+            break;
+            case 'his' :
+                if (count($arguments) < 2) {
+                    throw new \ArgumentCountError(sprintf('%s::%s() requires $value argument.', get_class($this), $name));
+                }
+                $this->statsd->histogram(...$arguments);
+            break;
+            case 'dis' :
+                if (count($arguments) < 2) {
+                    throw new \ArgumentCountError(sprintf('%s::%s() requires $value argument.', get_class($this), $name));
+                }
+                $this->statsd->distribution(...$arguments);
+            break;
+            case 'set' :
+                if (count($arguments) < 2) {
+                    throw new \ArgumentCountError(sprintf('%s::%s() requires $value argument.', get_class($this), $name));
+                }
+                $this->statsd->set(...$arguments);
+            break;
+            case 'inc' : $this->statsd->increment(...$arguments); break;
+            case 'dec' : $this->statsd->decrement(...$arguments); break;
+            case 'upd' : $this->statsd->updateStats(...$arguments); break;
         }
     }
 
@@ -96,9 +121,14 @@ abstract class AbstractDatadogService
     protected function createMetricMethodMap(): void
     {
         $ref = new \ReflectionClass($this);
-        preg_match_all('~@method void (inc|dec|tim|mic)([a-zA-Z0-9_]+)\(.*\).*\n~', (string) $ref->getDocComment(), $matches);
+        preg_match_all(
+            '~@method void (inc|dec|tim|mic|gau|his|dis|set|upd)([a-zA-Z0-9_]+)\(.*\).*\n~',
+            (string) $ref->getDocComment(),
+            $matches
+        );
         if (empty($matches[2])) {
-            throw new \UnexpectedValueException(sprintf('No dynamic methods declared in class comment block for class %s', get_class($this)));
+            throw new \UnexpectedValueException(sprintf('No dynamic methods declared in class comment block for ' .
+                'class %s', get_class($this)));
         }
 
         foreach ($matches[2] as $idx => $dynamicMethodName) {
