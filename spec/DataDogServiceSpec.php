@@ -3,9 +3,9 @@
 namespace spec\ThePlankmeister\DatadogBundle;
 
 use DataDog\DogStatsd;
-use ThePlankmeister\DatadogBundle\AbstractDatadogService;
 use Prophecy\Prophet;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use ThePlankmeister\DatadogBundle\AbstractDatadogService;
 
 class DataDogServiceSpec extends \PhpSpec\ObjectBehavior
 {

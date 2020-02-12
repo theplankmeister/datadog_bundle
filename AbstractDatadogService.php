@@ -26,9 +26,6 @@ abstract class AbstractDatadogService
     protected $methodMap = [];
 
     /**
-     * @param DogStatsd             $statsd
-     * @param ParameterBagInterface $params
-     *
      * @throws \ReflectionException
      * @throws \UnexpectedValueException
      */
@@ -43,9 +40,6 @@ abstract class AbstractDatadogService
     /**
      * Determines if the invoked method name should be considered available as a datadog stat, and if it is, invokes
      * the appropriate API call on that stat, with the arguments that may have been passed to the invoked method.
-     *
-     * @param string $name
-     * @param array  $arguments
      *
      * @throws \BadMethodCallException
      */
@@ -127,8 +121,7 @@ abstract class AbstractDatadogService
             $matches
         );
         if (empty($matches[2])) {
-            throw new \UnexpectedValueException(sprintf('No dynamic methods declared in class comment block for '.
-                'class %s', get_class($this)));
+            throw new \UnexpectedValueException(sprintf('No dynamic methods declared in class comment block for '.'class %s', get_class($this)));
         }
 
         foreach ($matches[2] as $idx => $dynamicMethodName) {
